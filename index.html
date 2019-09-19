@@ -35,14 +35,18 @@
     window.addEventListener('DOMContentLoaded', (event) => {
         console.log('DOM fully loaded and parsed');
         fs.readFile('/note', 'utf8', function (err, data) {
+            let editor = document.querySelector('#editor');
             if (err) {
-                document.querySelector('#editor').innerHTML = "Welocome To My Notepad"
+                editor.innerHTML = "Welocome To My Notepad"
             }
             else
                 if (data) {
-                    document.querySelector('#editor').innerHTML = data;
+                    editor.innerHTML = data;
                 }
+
+            editor.focus();
         })
+
 
         var autosave = setInterval(setInterval(function () {
             saveNote();
